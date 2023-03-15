@@ -1,8 +1,8 @@
-_Chess_
+__Chess__
 
 Chess is a classic two-player board game that has been played for centuries. It is a game of strategy and skill, and is often considered the "king" of board games.
 
-How to Play
+__How to Play__
 
 The game is played on a square board with 64 squares, arranged in an 8x8 grid. Each player begins with 16 pieces: one king, one queen, two rooks, two knights, two bishops, and eight pawns. The goal of the game is to checkmate your opponent's king, which means putting it in a position where it is under attack and cannot escape capture.
 
@@ -10,7 +10,7 @@ Each player takes turns moving one piece per turn. The player with the white pie
 
 There are also special moves in chess, such as castling (moving the king two squares towards a rook and moving the rook to the other side of the king) and en passant (capturing a pawn that has just moved two squares forward as if it had moved only one square).
 
-Rules and Etiquette
+__Rules and Etiquette__
 
 In addition to the basic rules of the game, there are some common rules and etiquette that chess players should follow:
 
