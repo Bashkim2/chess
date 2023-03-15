@@ -1,8 +1,8 @@
-__Chess__
+ # __Chess__
 
 Chess is a classic two-player board game that has been played for centuries. It is a game of strategy and skill, and is often considered the "king" of board games.
 
-__How to Play__
+# __How to Play__
 
 The game is played on a square board with 64 squares, arranged in an 8x8 grid. Each player begins with 16 pieces: one king, one queen, two rooks, two knights, two bishops, and eight pawns. The goal of the game is to checkmate your opponent's king, which means putting it in a position where it is under attack and cannot escape capture.
 
