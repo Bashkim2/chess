@@ -1,13 +1,9 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import Helloworld from "./components/helloworld";
+// import "./css/App.css";
 
 function App() {
-  return (
-    <div>
-      <h1>A very new CHESS game project</h1>
-    </div>
-  );
+  return <Helloworld />;
 }
 
 export default App;
