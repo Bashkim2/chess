@@ -14,14 +14,14 @@ There are also special moves in chess, such as castling (moving the king two squ
 
 In addition to the basic rules of the game, there are some common rules and etiquette that chess players should follow:
 
-Touch-move rule: If a player touches a piece, they must move that piece if it is a legal move. If they touch an opponent's piece, they must capture it if it is a legal move.
+__Touch-move rule:__ If a player touches a piece, they must move that piece if it is a legal move. If they touch an opponent's piece, they must capture it if it is a legal move.
 Resignation: A player can resign at any time by verbally indicating their resignation or by tipping over their king.
 Draw: If the game reaches a position where neither player can win, it is a draw. This can happen due to stalemate (when a player is not in check but cannot make a legal move) or threefold repetition (when the same position occurs three times with the same player to move).
 Clocks: In tournament play, players often use chess clocks to keep track of time. Each player has a set amount of time to make all of their moves, and if they run out of time, they lose the game.
 Getting Started
 If you're new to chess, there are many resources available to help you learn and improve your game. Here are some tips for getting started:
 
-Play online: There are many websites and apps where you can play chess against other players of all levels.
+__Play online:__ There are many websites and apps where you can play chess against other players of all levels.
 Read books: There are many books available that cover the basics of chess and more advanced strategies.
 Find a club: Many cities have chess clubs where you can play in person and learn from other players.
 Practice: The more you play, the better you'll get!
