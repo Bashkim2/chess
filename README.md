@@ -1,4 +1,4 @@
-*Chess*
+_Chess_
 
 Chess is a classic two-player board game that has been played for centuries. It is a game of strategy and skill, and is often considered the "king" of board games.
 
