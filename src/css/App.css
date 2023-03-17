@@ -3,3 +3,9 @@
 @tailwind components;
 
 @tailwind utilities;
+
+#chessboard {
+  background-color: #768e55;
+  width: 800px;
+  height: 800px;
+}
