@@ -5,6 +5,7 @@ module.exports = {
     "./src/index.tsx",
     "./src/App.test.tsx",
     "./src/components/helloworld.tsx",
+    "./src/components/chessboard.tsx",
   ],
   theme: {
     extend: {},
