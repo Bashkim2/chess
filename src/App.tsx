@@ -6,7 +6,7 @@ import "./css/Output.css";
 
 function App() {
   return (
-    <div className="grid justify-center place-content-center">
+    <div className="grid justify-center place-content-center h-screen">
       <Chessboard />;
     </div>
   );
