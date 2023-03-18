@@ -5,7 +5,11 @@ import "./css/App.css";
 import "./css/Output.css";
 
 function App() {
-  return <Chessboard />;
+  return (
+    <div className="grid justify-center place-content-center">
+      <Chessboard />;
+    </div>
+  );
 }
 
 export default App;

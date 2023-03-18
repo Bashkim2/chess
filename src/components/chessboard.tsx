@@ -15,5 +15,5 @@ export default function Chessboard() {
   //   </div>
   // );
 
-  return <div className="bg-blue-800 w-96 h-96">Chessboard</div>;
+  return <div className="bg-lime-600 w-96 h-96">Chessboard</div>;
 }
