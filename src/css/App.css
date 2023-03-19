@@ -9,6 +9,8 @@ body {
 }
 
 #chessboard {
+  display: grid;
+  grid-template-columns: repeat(8, 100px);
   width: 800px;
   height: 800px;
 }
