@@ -4,12 +4,11 @@
 
 @tailwind utilities;
 
-/* #chessboard {
-  background-color: #768e55;
-  width: 800px;
-  height: 800px;
-} */
-
 body {
   background-color: #212022;
+}
+
+#chessboard {
+  width: 800px;
+  height: 800px;
 }
