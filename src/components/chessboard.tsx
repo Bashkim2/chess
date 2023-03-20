@@ -21,6 +21,36 @@ for (let i = 0; i < 8; i++) {
   pieces.push({ image: "W_pawn.png", x: i, y: 1 });
 }
 
+const whitePiece = [
+  "W_rock.png",
+  "W_knight.png",
+  "W_bishop.png",
+  "W_queen.png",
+  "W_king.png",
+  "W_bishop.png",
+  "W_knight.png",
+  "W_rock.png",
+];
+
+const blackPiece = [
+  "B_rock.png",
+  "B_knight.png",
+  "B_bishop.png",
+  "B_queen.png",
+  "B_king.png",
+  "B_bishop.png",
+  "B_knight.png",
+  "B_rock.png",
+];
+
+for (let i = 0; i < 8; i++) {
+  pieces.push({ image: blackPiece[i], x: i, y: 7 });
+}
+
+for (let i = 0; i < 8; i++) {
+  pieces.push({ image: whitePiece[i], x: i, y: 0 });
+}
+
 export default function Chessboard() {
   let board = [];
 
