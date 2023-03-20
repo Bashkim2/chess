@@ -6,6 +6,7 @@ module.exports = {
     "./src/App.test.tsx",
     "./src/components/helloworld.tsx",
     "./src/components/chessboard.tsx",
+    "./src/components/tile.tsx",
   ],
   theme: {
     extend: {},
