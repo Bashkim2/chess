@@ -3,14 +3,3 @@
 @tailwind components;
 
 @tailwind utilities;
-
-body {
-  background-color: #212022;
-}
-
-#chessboard {
-  display: grid;
-  grid-template-columns: repeat(8, 100px);
-  width: 800px;
-  height: 800px;
-}
