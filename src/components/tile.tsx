@@ -10,7 +10,7 @@ export default function Tile({ number, image }: Props) {
         {image && (
           <div
             style={{ backgroundImage: `url(${image})` }}
-            className="w-28 h-28 bg-center bg-no-repeat bg-cover hover:cursor-grab active:cursor-grabbing chessPiece"
+            className="bg-center bg-no-repeat bg-cover hover:cursor-grab active:cursor-grabbing chessPiece"
           ></div>
         )}
       </div>
@@ -21,7 +21,7 @@ export default function Tile({ number, image }: Props) {
         {image && (
           <div
             style={{ backgroundImage: `url(${image})` }}
-            className="w-28 h-28 bg-center bg-no-repeat bg-cover hover:cursor-grab active:cursor-grabbing chessPiece"
+            className="bg-center bg-no-repeat bg-cover hover:cursor-grab active:cursor-grabbing chessPiece"
           ></div>
         )}
       </div>
