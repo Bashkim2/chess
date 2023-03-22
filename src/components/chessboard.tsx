@@ -91,12 +91,12 @@ export default function Chessboard() {
       const minX = chessboard.offsetLeft - 25;
       const minY = chessboard.offsetTop - 25;
       const maxX = chessboard.offsetLeft + chessboard.clientWidth - 75;
-      const maxY = chessboard.offsetTop + chessboard.clientWidth - 75;
+      const maxY = chessboard.offsetTop + chessboard.clientHeight - 75;
       const x = e.clientX - 25;
       const y = e.clientY - 25;
       activePiece.style.position = "absolute";
 
-      // chessboard contraints/ limitations, pieces can not be moved outside of the chessboard
+      // chessboard constraints/limitations, pieces can not be moved outside of the chessboard
       if (x < minX) {
         activePiece.style.left = `${minX}px`;
       } else if (x > maxX) {
@@ -107,7 +107,7 @@ export default function Chessboard() {
 
       if (y < minY) {
         activePiece.style.top = `${minY}px`;
-      } else if (y > maxX) {
+      } else if (y > maxY) {
         activePiece.style.top = `${maxY}px`;
       } else {
         activePiece.style.top = `${y}px`;
