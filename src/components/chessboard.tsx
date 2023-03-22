@@ -96,6 +96,7 @@ export default function Chessboard() {
       const y = e.clientY - 25;
       activePiece.style.position = "absolute";
 
+      // chessboard contraints/ limitations, pieces can not be moved outside of the chessboard
       if (x < minX) {
         activePiece.style.left = `${minX}px`;
       } else if (x > maxX) {
