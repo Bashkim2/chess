@@ -54,19 +54,32 @@ for (let i = 0; i < 8; i++) {
 
 export default function Chessboard() {
   const [pieces, setPieces] = useState<Piece[]>(initialBoardState);
+  const [activePiece, setActivePiece] = useState<HTMLElement | null>(null);
+  const [gridX, setGridX] = useState(0);
+  const [gridY, setGridY] = useState(0);
+
   const chessboardRef = useRef<HTMLDivElement>(null);
-  let activePiece: HTMLElement | null = null;
 
   function grabPiece(e: React.MouseEvent) {
     const element = e.target as HTMLElement;
-    if (element.classList.contains("chessPiece")) {
+    const chessboard = chessboardRef.current;
+
+    if (element.classList.contains("chessPiece") && chessboard) {
+      const gridX = Math.floor((e.clientX - chessboard.offsetLeft) / 100);
+      const gridY = Math.abs(
+        Math.ceil((e.clientY - chessboard.offsetTop - 800) / 100)
+      );
+
+      setGridX(gridX);
+      setGridY(gridY);
+
       const x = e.clientX - 50;
       const y = e.clientY - 50;
       element.style.position = "absolute";
       element.style.left = `${x}px`;
       element.style.top = `${y}px`;
 
-      activePiece = element;
+      setActivePiece(element);
     }
   }
 
@@ -102,18 +115,25 @@ export default function Chessboard() {
   }
 
   function dropPiece(e: React.MouseEvent) {
-    if (activePiece) {
+    const chessboard = chessboardRef.current;
+    if (activePiece && chessboard) {
+      const x = Math.floor((e.clientX - chessboard.offsetLeft) / 100);
+      const y = Math.abs(
+        Math.ceil((e.clientY - chessboard.offsetTop - 800) / 100)
+      );
+
+      console.log(x, y);
       setPieces((value) => {
         const pieces = value.map((p) => {
-          if (p.x === 0 && p.y === 0) {
-            p.x = 0;
-            p.y = 1;
+          if (p.x === gridX && p.y === gridY) {
+            p.x = x;
+            p.y = y;
           }
           return p;
         });
         return pieces;
       });
-      activePiece = null;
+      setActivePiece(null);
     }
   }
 
