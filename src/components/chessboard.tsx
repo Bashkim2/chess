@@ -12,6 +12,8 @@ interface Piece {
   y: number;
 }
 
+// The chessboard and pieces positions initially
+
 const initialBoardState: Piece[] = [];
 
 const whitePiece = [
@@ -52,6 +54,7 @@ for (let i = 0; i < 8; i++) {
   initialBoardState.push({ image: "W_pawn.png", x: i, y: 1 });
 }
 
+// The chessboard functionality
 export default function Chessboard() {
   const [pieces, setPieces] = useState<Piece[]>(initialBoardState);
   const [activePiece, setActivePiece] = useState<HTMLElement | null>(null);
@@ -60,6 +63,7 @@ export default function Chessboard() {
 
   const chessboardRef = useRef<HTMLDivElement>(null);
 
+  // Functions for moving, grabbing and dropping pieces
   function grabPiece(e: React.MouseEvent) {
     const element = e.target as HTMLElement;
     const chessboard = chessboardRef.current;
