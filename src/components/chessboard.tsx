@@ -56,22 +56,6 @@ export default function Chessboard() {
   const [pieces, setPieces] = useState<Piece[]>(initialBoardState);
   const chessboardRef = useRef<HTMLDivElement>(null);
   let activePiece: HTMLElement | null = null;
-  let board = [];
-
-  for (let i = verticalsAxis.length - 1; i >= 0; i--) {
-    for (let j = 0; j < horizontalAxis.length; j++) {
-      const number = i + j + 2;
-      let image = "";
-
-      pieces.forEach((p) => {
-        if (p.x === j && p.y === i) {
-          image = p.image;
-        }
-      });
-
-      board.push(<Tile key={`${j},${i}`} image={image} number={number} />);
-    }
-  }
 
   function grabPiece(e: React.MouseEvent) {
     const element = e.target as HTMLElement;
@@ -119,7 +103,34 @@ export default function Chessboard() {
 
   function dropPiece(e: React.MouseEvent) {
     if (activePiece) {
+      setPieces((value) => {
+        const pieces = value.map((p) => {
+          if (p.x === 0 && p.y === 0) {
+            p.x = 0;
+            p.y = 1;
+          }
+          return p;
+        });
+        return pieces;
+      });
       activePiece = null;
+    }
+  }
+
+  let board = [];
+
+  for (let i = verticalsAxis.length - 1; i >= 0; i--) {
+    for (let j = 0; j < horizontalAxis.length; j++) {
+      const number = i + j + 2;
+      let image = "";
+
+      pieces.forEach((p) => {
+        if (p.x === j && p.y === i) {
+          image = p.image;
+        }
+      });
+
+      board.push(<Tile key={`${j},${i}`} image={image} number={number} />);
     }
   }
 
