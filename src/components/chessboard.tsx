@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import "../css/App.css";
 import "../css/Output.css";
 import Tile from "./tile";
@@ -12,15 +12,7 @@ interface Piece {
   y: number;
 }
 
-const pieces: Piece[] = [];
-
-for (let i = 0; i < 8; i++) {
-  pieces.push({ image: "B_pawn.png", x: i, y: 6 });
-}
-
-for (let i = 0; i < 8; i++) {
-  pieces.push({ image: "W_pawn.png", x: i, y: 1 });
-}
+const initialBoardState: Piece[] = [];
 
 const whitePiece = [
   "W_rock.png",
@@ -32,6 +24,10 @@ const whitePiece = [
   "W_knight.png",
   "W_rock.png",
 ];
+
+for (let i = 0; i < 8; i++) {
+  initialBoardState.push({ image: whitePiece[i], x: i, y: 0 });
+}
 
 const blackPiece = [
   "B_rock.png",
@@ -45,14 +41,19 @@ const blackPiece = [
 ];
 
 for (let i = 0; i < 8; i++) {
-  pieces.push({ image: blackPiece[i], x: i, y: 7 });
+  initialBoardState.push({ image: blackPiece[i], x: i, y: 7 });
 }
 
 for (let i = 0; i < 8; i++) {
-  pieces.push({ image: whitePiece[i], x: i, y: 0 });
+  initialBoardState.push({ image: "B_pawn.png", x: i, y: 6 });
+}
+
+for (let i = 0; i < 8; i++) {
+  initialBoardState.push({ image: "W_pawn.png", x: i, y: 1 });
 }
 
 export default function Chessboard() {
+  const [pieces, setPieces] = useState<Piece[]>(initialBoardState);
   const chessboardRef = useRef<HTMLDivElement>(null);
   let activePiece: HTMLElement | null = null;
   let board = [];
@@ -96,7 +97,8 @@ export default function Chessboard() {
       const y = e.clientY - 25;
       activePiece.style.position = "absolute";
 
-      // chessboard constraints/limitations, pieces can not be moved outside of the chessboard
+      // chessboard constraints/limitations,
+      // pieces can not be moved outside of the chessboard
       if (x < minX) {
         activePiece.style.left = `${minX}px`;
       } else if (x > maxX) {
