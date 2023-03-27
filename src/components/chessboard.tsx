@@ -16,6 +16,7 @@ interface Piece {
 
 const initialBoardState: Piece[] = [];
 
+// white pieces without pawns positions
 const whitePiece = [
   "W_rock.png",
   "W_knight.png",
@@ -31,6 +32,7 @@ for (let i = 0; i < 8; i++) {
   initialBoardState.push({ image: whitePiece[i], x: i, y: 0 });
 }
 
+// black pieces without pawns positions
 const blackPiece = [
   "B_rock.png",
   "B_knight.png",
@@ -46,9 +48,13 @@ for (let i = 0; i < 8; i++) {
   initialBoardState.push({ image: blackPiece[i], x: i, y: 7 });
 }
 
+// white pawns positions
+
 for (let i = 0; i < 8; i++) {
   initialBoardState.push({ image: "B_pawn.png", x: i, y: 6 });
 }
+
+// black pawns positions
 
 for (let i = 0; i < 8; i++) {
   initialBoardState.push({ image: "W_pawn.png", x: i, y: 1 });
@@ -140,6 +146,8 @@ export default function Chessboard() {
       setActivePiece(null);
     }
   }
+
+  // chessboard designed
 
   let board = [];
 
