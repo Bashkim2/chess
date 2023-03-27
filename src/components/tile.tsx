@@ -4,6 +4,7 @@ interface Props {
 }
 
 export default function Tile({ number, image }: Props) {
+  // Black tile background
   if (number % 2 === 0) {
     return (
       <div className="h-24 w-24 bg-yellow-600">
@@ -15,7 +16,9 @@ export default function Tile({ number, image }: Props) {
         )}
       </div>
     );
-  } else {
+  }
+  // Black tile background
+  else {
     return (
       <div className="h-24 w-24 bg-white">
         {image && (
