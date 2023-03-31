@@ -12,6 +12,7 @@ interface Piece {
   x: number;
   y: number;
   type: PieceType;
+  team: TeamType;
 }
 
 export enum PieceType {
@@ -23,13 +24,11 @@ export enum PieceType {
   KING,
 }
 
-enum pieceList {
-  Rook,
-  KNIGHT,
-  BISHOP,
-  QUEEN,
-  KING,
+export enum TeamType {
+  OUR,
+  OPPONENT,
 }
+
 // The chessboard and pieces positions initially
 
 const initialBoardState: Piece[] = [];
@@ -54,14 +53,39 @@ for (let i = 0; i < numberPiece; i++) {
       x: i,
       y: 0,
       type: PieceType.ROOK,
+      team: TeamType.OUR,
     });
-  }
-  if (i === 1 && i === numberPiece - 2) {
+  } else if (i === 1 && i === numberPiece - 2) {
+    initialBoardState.push({
+      image: whitePiece[i],
+      x: i,
+      y: 0,
+      type: PieceType.KNIGHT,
+      team: TeamType.OUR,
+    });
+  } else if (i === 2 && i === numberPiece - 3) {
     initialBoardState.push({
       image: whitePiece[i],
       x: i,
       y: 0,
       type: PieceType.BISHOP,
+      team: TeamType.OUR,
+    });
+  } else if (i === 3 && i === numberPiece - 4) {
+    initialBoardState.push({
+      image: whitePiece[i],
+      x: i,
+      y: 0,
+      type: PieceType.QUEEN,
+      team: TeamType.OUR,
+    });
+  } else {
+    initialBoardState.push({
+      image: whitePiece[i],
+      x: i,
+      y: 0,
+      type: PieceType.KING,
+      team: TeamType.OUR,
     });
   }
 }
@@ -78,8 +102,48 @@ const blackPiece = [
   "B_rock.png",
 ];
 
-for (let i = 0; i < 8; i++) {
-  initialBoardState.push({ image: blackPiece[i], x: i, y: 7 });
+for (let i = 0; i < numberPiece; i++) {
+  if (i === 0 && i === numberPiece - 1) {
+    initialBoardState.push({
+      image: blackPiece[i],
+      x: i,
+      y: 7,
+      type: PieceType.ROOK,
+      team: TeamType.OUR,
+    });
+  } else if (i === 1 && i === numberPiece - 2) {
+    initialBoardState.push({
+      image: blackPiece[i],
+      x: i,
+      y: 7,
+      type: PieceType.KNIGHT,
+      team: TeamType.OUR,
+    });
+  } else if (i === 2 && i === numberPiece - 3) {
+    initialBoardState.push({
+      image: blackPiece[i],
+      x: i,
+      y: 7,
+      type: PieceType.BISHOP,
+      team: TeamType.OUR,
+    });
+  } else if (i === 3 && i === numberPiece - 4) {
+    initialBoardState.push({
+      image: blackPiece[i],
+      x: i,
+      y: 7,
+      type: PieceType.QUEEN,
+      team: TeamType.OUR,
+    });
+  } else {
+    initialBoardState.push({
+      image: blackPiece[i],
+      x: i,
+      y: 7,
+      type: PieceType.KING,
+      team: TeamType.OUR,
+    });
+  }
 }
 
 // white pawns positions
@@ -90,6 +154,7 @@ for (let i = 0; i < 8; i++) {
     x: i,
     y: 6,
     type: PieceType.PAWN,
+    team: TeamType.OPPONENT,
   });
 }
 
@@ -101,6 +166,7 @@ for (let i = 0; i < 8; i++) {
     x: i,
     y: 1,
     type: PieceType.PAWN,
+    team: TeamType.OUR,
   });
 }
 
@@ -179,10 +245,10 @@ export default function Chessboard() {
 
       // console.log(x, y);
 
-      referee.isValidMove(gridX, gridY, x, y);
       setPieces((value) => {
         const pieces = value.map((p) => {
           if (p.x === gridX && p.y === gridY) {
+            referee.isValidMove(gridX, gridY, x, y, p.type, p.team);
             p.x = x;
             p.y = y;
           }
