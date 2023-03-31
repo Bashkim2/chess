@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import "../css/App.css";
 import "../css/Output.css";
 import Tile from "./tile";
+import Referee from "../referee/Referee";
 
 const verticalsAxis = ["a", "b", "c", "d", "e", "f", "g", "h"];
 const horizontalAxis = ["1", "2", "3", "4", "5", "6", "7", "8"];
@@ -10,11 +11,29 @@ interface Piece {
   image: string;
   x: number;
   y: number;
+  type: PieceType;
 }
 
+export enum PieceType {
+  PAWN,
+  BISHOP,
+  KNIGHT,
+  ROOK,
+  QUEEN,
+  KING,
+}
+
+enum pieceList {
+  Rook,
+  KNIGHT,
+  BISHOP,
+  QUEEN,
+  KING,
+}
 // The chessboard and pieces positions initially
 
 const initialBoardState: Piece[] = [];
+const numberPiece = 8;
 
 // white pieces without pawns positions
 const whitePiece = [
@@ -28,8 +47,23 @@ const whitePiece = [
   "W_rock.png",
 ];
 
-for (let i = 0; i < 8; i++) {
-  initialBoardState.push({ image: whitePiece[i], x: i, y: 0 });
+for (let i = 0; i < numberPiece; i++) {
+  if (i === 0 && i === numberPiece - 1) {
+    initialBoardState.push({
+      image: whitePiece[i],
+      x: i,
+      y: 0,
+      type: PieceType.ROOK,
+    });
+  }
+  if (i === 1 && i === numberPiece - 2) {
+    initialBoardState.push({
+      image: whitePiece[i],
+      x: i,
+      y: 0,
+      type: PieceType.BISHOP,
+    });
+  }
 }
 
 // black pieces without pawns positions
@@ -51,13 +85,23 @@ for (let i = 0; i < 8; i++) {
 // white pawns positions
 
 for (let i = 0; i < 8; i++) {
-  initialBoardState.push({ image: "B_pawn.png", x: i, y: 6 });
+  initialBoardState.push({
+    image: "B_pawn.png",
+    x: i,
+    y: 6,
+    type: PieceType.PAWN,
+  });
 }
 
 // black pawns positions
 
 for (let i = 0; i < 8; i++) {
-  initialBoardState.push({ image: "W_pawn.png", x: i, y: 1 });
+  initialBoardState.push({
+    image: "W_pawn.png",
+    x: i,
+    y: 1,
+    type: PieceType.PAWN,
+  });
 }
 
 // The chessboard functionality
@@ -66,6 +110,7 @@ export default function Chessboard() {
   const [activePiece, setActivePiece] = useState<HTMLElement | null>(null);
   const [gridX, setGridX] = useState(0);
   const [gridY, setGridY] = useState(0);
+  const referee = new Referee();
 
   const chessboardRef = useRef<HTMLDivElement>(null);
 
@@ -132,7 +177,9 @@ export default function Chessboard() {
         Math.ceil((e.clientY - chessboard.offsetTop - 800) / 100)
       );
 
-      console.log(x, y);
+      // console.log(x, y);
+
+      referee.isValidMove(gridX, gridY, x, y);
       setPieces((value) => {
         const pieces = value.map((p) => {
           if (p.x === gridX && p.y === gridY) {
