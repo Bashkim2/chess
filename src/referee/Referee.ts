@@ -23,11 +23,19 @@ export default class Referee {
             console.log("Valid Move!");
             return true;
           }
+        } else {
+          if (px === x && y - py === 1) {
+            return true;
+          }
         }
       } else {
         if (py === 6) {
           if (px === x && (y - py === -1 || y - py === -2)) {
             console.log("Valid Move!");
+            return true;
+          }
+        } else {
+          if (px === x && y - py === -1) {
             return true;
           }
         }
