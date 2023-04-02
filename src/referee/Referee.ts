@@ -1,6 +1,7 @@
 import { PieceType, TeamType, Piece } from "../components/chessboard";
 
 export default class Referee {
+  // Function isOccupied
   tileIsOccupied(x: number, y: number, boardState: Piece[]): boolean {
     const piece = boardState.find((p) => p.x === x && p.y === y);
 
@@ -11,6 +12,7 @@ export default class Referee {
     }
   }
 
+  // Function move pawn
   isValidMove(
     px: number,
     py: number,
