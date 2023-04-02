@@ -20,12 +20,6 @@ export default class Referee {
     team: TeamType,
     boardState: Piece[]
   ) {
-    // console.log("Referee is checking moves");
-    // console.log(`Previous location: (${px},${py})`);
-    // console.log(`current location: (${x},${y})`);
-    // console.log(`type: ${type}`);
-    // console.log(`team: ${team}`);
-
     // Pawns Valid Moves
     if (type === PieceType.PAWN) {
       if (team === TeamType.OUR) {
