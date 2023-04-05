@@ -184,7 +184,7 @@ export default function Chessboard() {
 
   const chessboardRef = useRef<HTMLDivElement>(null);
 
-  // Functions for moving, grabbing and dropping pieces
+  // Functions for grabbing pieces
   function grabPiece(e: React.MouseEvent) {
     const element = e.target as HTMLElement;
     const chessboard = chessboardRef.current;
@@ -208,6 +208,7 @@ export default function Chessboard() {
     }
   }
 
+  // Function moving pieces
   function movePiece(e: React.MouseEvent) {
     const chessboard = chessboardRef.current;
     if (activePiece && chessboard) {
@@ -239,6 +240,7 @@ export default function Chessboard() {
     }
   }
 
+  // Function dropping pieces
   function dropPiece(e: React.MouseEvent) {
     const chessboard = chessboardRef.current;
     if (activePiece && chessboard) {
