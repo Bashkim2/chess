@@ -4,8 +4,12 @@ import "../css/Output.css";
 import Tile from "./tile";
 import Referee from "../referee/Referee";
 
+// Constants
+
 const verticalsAxis = ["a", "b", "c", "d", "e", "f", "g", "h"];
 const horizontalAxis = ["1", "2", "3", "4", "5", "6", "7", "8"];
+
+// Enum and interfaces
 
 export interface Piece {
   image: string;
@@ -242,8 +246,6 @@ export default function Chessboard() {
       const y = Math.abs(
         Math.ceil((e.clientY - chessboard.offsetTop - 800) / 100)
       );
-
-      // console.log(x, y);
 
       setPieces((value) => {
         const pieces = value.map((p) => {
