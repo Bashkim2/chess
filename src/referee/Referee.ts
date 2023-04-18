@@ -63,15 +63,15 @@ export default class Referee {
       else if (x - px === -1 && y - py === pawnDirection) {
         // Attack in Upper or Bottom left corner
         if (this.tileIsOccupiedByOpponent(x, y, boardState, team)) {
-          console.log("We can strike!");
-          // return true;
+          // console.log("We can strike!");
+          return true;
         }
       } else if (x - px === 1 && y - py === pawnDirection) {
         // Attack in Upper or Bottom right corner
         if (this.tileIsOccupiedByOpponent(x, y, boardState, team)) {
-          console.log("We can strike!");
+          // console.log("We can strike!");
 
-          // return true;
+          return true;
         }
       }
       return false;
