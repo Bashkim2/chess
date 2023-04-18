@@ -279,21 +279,6 @@ export default function Chessboard() {
           }, [] as Piece[]);
 
           setPieces(updatedPieces);
-
-          // setPieces((value) => {
-          //   const pieces = value.reduce((results, piece) => {
-          //     if (piece.x === currentPiece.x && piece.y === currentPiece.y) {
-          //       piece.x = x;
-          //       piece.y = y;
-          //       results.push(piece);
-          //     } else if (!(piece.x === x && piece.y === y)) {
-          //       results.push(piece);
-          //     }
-
-          //     return results;
-          //   }, [] as Piece[]);
-          //   return pieces;
-          // });
         } else {
           // Remove the attacked piece
           activePiece.style.position = "relative";
