@@ -30,17 +30,29 @@ export default class Referee {
     }
   }
 
-  isEnPassantMove(x: number, y: number, boardState: Piece[], team: TeamType) {
-    const pieceDirection = team === TeamType.OUR ? 1 : -1;
-    const piece = boardState.find(
-      (p) => p.x === x && p.y === y + pieceDirection
-    );
+  isEnPassantMove(
+    px: number,
+    py: number,
+    x: number,
+    y: number,
+    type: PieceType,
+    team: TeamType,
+    boardState: Piece[]
+  ) {
+    const pawnDirection = team === TeamType.OUR ? 1 : -1;
 
-    if (piece) {
-      // return true;
-    } else {
-      console.log("we got an en passant piece!");
+    if (type === PieceType.PAWN) {
+      if ((x - px === -1 || x - px === 1) && y - py === pawnDirection) {
+        const piece = boardState.find(
+          (p) => p.x === x && p.y === y - pawnDirection && p.enPassant
+        );
+        if (piece) {
+          return true;
+        }
+      }
     }
+
+    return false;
   }
 
   // Function move pawn

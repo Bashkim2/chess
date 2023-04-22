@@ -17,6 +17,7 @@ export interface Piece {
   y: number;
   type: PieceType;
   team: TeamType;
+  enPassant?: boolean;
 }
 
 export enum PieceType {
@@ -265,21 +266,55 @@ export default function Chessboard() {
           pieces
         );
 
+        // En passant move logic
         const isEnPassantMove = referee.isEnPassantMove(
+          gridX,
+          gridY,
           x,
           y,
-          pieces,
-          currentPiece.team
+          currentPiece.type,
+          currentPiece.team,
+          pieces
         );
-        if (validMove) {
+
+        const pawnDirection = currentPiece.team === TeamType.OUR ? 1 : -1;
+
+        if (isEnPassantMove) {
+          const updatedPieces = pieces.reduce((results, piece) => {
+            if (piece.x === gridX && piece.y === gridY) {
+              piece.enPassant = false;
+              piece.x = x;
+              piece.y = y;
+              results.push(piece);
+            } else if (!(piece.x === x && piece.y === y - pawnDirection)) {
+              if (piece.type === PieceType.PAWN) {
+                piece.enPassant = false;
+              }
+              results.push(piece);
+            }
+            return results;
+          }, [] as Piece[]);
+          setPieces(updatedPieces);
+        } else if (validMove) {
           // Update the piece position
           // And if a piece is attack remove it
           const updatedPieces = pieces.reduce((results, piece) => {
+            if (piece.x === gridX && piece.y === gridY) {
+              if (Math.abs(gridY - y) === 2 && piece.type === PieceType.PAWN) {
+                // En Passant move is true only for the long move only
+                piece.enPassant = true;
+              } else {
+                piece.enPassant = false;
+              }
+            }
             if (piece.x === gridX && piece.y === gridY) {
               piece.x = x;
               piece.y = y;
               results.push(piece);
             } else if (!(piece.x === x && piece.y === y)) {
+              if (piece.type === PieceType.PAWN) {
+                piece.enPassant = false;
+              }
               results.push(piece);
             }
 
