@@ -252,6 +252,8 @@ export default function Chessboard() {
       const currentPiece = pieces.find((p) => p.x === gridX && p.y === gridY);
       const attackedPiece = pieces.find((p) => p.x === x && p.y === y);
 
+      // CurrentPiece (3,4)
+
       if (currentPiece) {
         const validMove = referee.isValidMove(
           gridX,
@@ -267,7 +269,7 @@ export default function Chessboard() {
           // Update the piece position
           // And if a piece is attack remove it
           const updatedPieces = pieces.reduce((results, piece) => {
-            if (piece.x === currentPiece.x && piece.y === currentPiece.y) {
+            if (piece.x === gridX && piece.y === gridY) {
               piece.x = x;
               piece.y = y;
               results.push(piece);
