@@ -30,6 +30,19 @@ export default class Referee {
     }
   }
 
+  isEnPassantMove(x: number, y: number, boardState: Piece[], team: TeamType) {
+    const pieceDirection = team === TeamType.OUR ? 1 : -1;
+    const piece = boardState.find(
+      (p) => p.x === x && p.y === y + pieceDirection
+    );
+
+    if (piece) {
+      // return true;
+    } else {
+      console.log("we got an en passant piece!");
+    }
+  }
+
   // Function move pawn
   isValidMove(
     px: number,

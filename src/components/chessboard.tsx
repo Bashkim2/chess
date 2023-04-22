@@ -265,6 +265,12 @@ export default function Chessboard() {
           pieces
         );
 
+        const isEnPassantMove = referee.isEnPassantMove(
+          x,
+          y,
+          pieces,
+          currentPiece.team
+        );
         if (validMove) {
           // Update the piece position
           // And if a piece is attack remove it
