@@ -44,6 +44,20 @@ const initialBoardState: Piece[] = [
     x: 6,
     y: 0,
     type: PieceType.ROOK,
+    team: TeamType.OPPONENT,
+  },
+   {
+    image: `public/W_bishop.png`,
+    x: 1,
+    y: 7,
+    type: PieceType.BISHOP,
     team: TeamType.OUR,
+  },
+  {
+    image: `public/B_bishop.png`,
+    x: 6,
+    y: 0,
+    type: PieceType.BISHOP,
+    team: TeamType.OPPONENT,
   },
 ];
