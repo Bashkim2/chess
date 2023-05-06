@@ -3,32 +3,13 @@ import "../css/App.css";
 import "../css/Output.css";
 import Tile from "./tile";
 import Referee from "../referee/Referee";
-import { verticalsAxis, horizontalAxis } from "../Constants";
-
-// Enum and interfaces
-
-export interface Piece {
-  image: string;
-  x: number;
-  y: number;
-  type: PieceType;
-  team: TeamType;
-  enPassant?: boolean;
-}
-
-export enum PieceType {
-  PAWN,
-  BISHOP,
-  KNIGHT,
-  ROOK,
-  QUEEN,
-  KING,
-}
-
-export enum TeamType {
-  OUR,
-  OPPONENT,
-}
+import {
+  verticalsAxis,
+  horizontalAxis,
+  Piece,
+  PieceType,
+  TeamType,
+} from "../Constants";
 
 // The chessboard and pieces positions initially
 
