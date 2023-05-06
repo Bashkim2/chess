@@ -1,4 +1,4 @@
-import { PieceType, TeamType, Piece } from "../components/chessboard";
+import { PieceType, TeamType, Piece } from "../Constants";
 
 export default class Referee {
   // Function tileIsOccupied used for if a tile is occupied by another piece
