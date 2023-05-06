@@ -3,11 +3,7 @@ import "../css/App.css";
 import "../css/Output.css";
 import Tile from "./tile";
 import Referee from "../referee/Referee";
-
-// Constants
-
-const verticalsAxis = ["a", "b", "c", "d", "e", "f", "g", "h"];
-const horizontalAxis = ["1", "2", "3", "4", "5", "6", "7", "8"];
+import { verticalsAxis, horizontalAxis } from "../Constants";
 
 // Enum and interfaces
 
