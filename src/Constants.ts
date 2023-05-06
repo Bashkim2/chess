@@ -74,4 +74,18 @@ const initialBoardState: Piece[] = [
     type: PieceType.KNIGHT,
     team: TeamType.OPPONENT,
   },
+  {
+    image: `public/W_king.png`,
+    x: 1,
+    y: 7,
+    type: PieceType.KING,
+    team: TeamType.OUR,
+  },
+  {
+    image: `public/B_king.png`,
+    x: 6,
+    y: 0,
+    type: PieceType.KING,
+    team: TeamType.OPPONENT,
+  },
 ];
