@@ -14,6 +14,7 @@ import {
 
 
 
+
 // white pawns positions
 
 for (let i = 0; i < 8; i++) {
@@ -26,17 +27,6 @@ for (let i = 0; i < 8; i++) {
   });
 }
 
-// black pawns positions
-
-for (let i = 0; i < 8; i++) {
-  initialBoardState.push({
-    image: "W_pawn.png",
-    x: i,
-    y: 1,
-    type: PieceType.PAWN,
-    team: TeamType.OUR,
-  });
-}
 
 // The chessboard functionality
 export default function Chessboard() {
