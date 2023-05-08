@@ -37,42 +37,42 @@ export enum TeamType {
 
 export const initialBoardState: Piece[] = [
   {
-    image: `public/W_rock.png`,
+    image: "W_rock.png",
     x: 0,
     y: 7,
     type: PieceType.ROOK,
     team: TeamType.OUR,
   },
   {
-    image: `public/B_rock.png`,
+    image: "B_rock.png",
     x: 0,
     y: 0,
     type: PieceType.ROOK,
     team: TeamType.OPPONENT,
   },
   {
-    image: `public/W_rock.png`,
+    image: "W_rock.png",
     x: 7,
     y: 7,
     type: PieceType.ROOK,
     team: TeamType.OUR,
   },
   {
-    image: `public/B_rock.png`,
+    image: "B_rock.png",
     x: 7,
     y: 0,
     type: PieceType.ROOK,
     team: TeamType.OPPONENT,
   },
   {
-    image: `public/W_knight.png`,
+    image: "W_knight.png",
     x: 1,
     y: 7,
     type: PieceType.KNIGHT,
     team: TeamType.OUR,
   },
   {
-    image: `public/B_knight.png`,
+    image: "B_knight.png",
     x: 1,
     y: 0,
     type: PieceType.KNIGHT,
@@ -233,7 +233,7 @@ export const initialBoardState: Piece[] = [
     team: TeamType.OPPONENT,
   },
   {
-    image: `public/W_pawn.png`,
+    image: "public/W_pawn.png",
     x: 6,
     y: 7,
     type: PieceType.PAWN,
