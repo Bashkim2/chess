@@ -9,24 +9,8 @@ import {
   Piece,
   PieceType,
   TeamType,
-  initialBoardState
+  initialBoardState,
 } from "../Constants";
-
-
-
-
-// white pawns positions
-
-for (let i = 0; i < 8; i++) {
-  initialBoardState.push({
-    image: "B_pawn.png",
-    x: i,
-    y: 6,
-    type: PieceType.PAWN,
-    team: TeamType.OPPONENT,
-  });
-}
-
 
 // The chessboard functionality
 export default function Chessboard() {
