@@ -37,6 +37,8 @@ export enum TeamType {
   OPPONENT,
 }
 
+/******************************CHESSBOARD INIT***********************************************/
+
 /**
  * The chessboard and pieces positions initially
  */
