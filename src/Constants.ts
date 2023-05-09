@@ -248,14 +248,14 @@ export const initialBoardState: Piece[] = [
     team: TeamType.OUR,
   },
   {
-    image: `public/B_pawn.png`,
+    image: "B_pawn.png",
     x: 6,
     y: 0,
     type: PieceType.PAWN,
     team: TeamType.OPPONENT,
   },
   {
-    image: `public/W_pawn.png`,
+    image: "W_pawn.png",
     x: 7,
     y: 7,
     type: PieceType.PAWN,
