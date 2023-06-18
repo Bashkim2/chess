@@ -1,4 +1,4 @@
-import "./Ranks.css";
+import "../../../css/Ranks.css";
 
 const Ranks = ({ ranks }) => (
   <div className="ranks">

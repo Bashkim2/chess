@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import "./App.css";
+import "./css/App.css";
 import Board from "./components/Board/Board";
 import AppContext from "./contexts/Context";
 import { reducer } from "./reducer/reducer";

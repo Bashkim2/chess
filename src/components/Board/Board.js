@@ -1,4 +1,4 @@
-import "./Board.css";
+import "../../css/Board.css";
 
 import Ranks from "./bits/Ranks.js";
 import Files from "./bits/Files";
