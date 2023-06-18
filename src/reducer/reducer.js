@@ -1,24 +1,26 @@
+import { Status } from "../constant";
 import actionTypes from "./actionTypes";
 
 export const reducer = (state, action) => {
   switch (action.type) {
     case actionTypes.NEW_MOVE: {
-      let { turn, position } = state;
+      let { position, turn } = state;
+      position = [...position, action.payload.newPosition];
 
       turn = turn === "w" ? "b" : "w";
-      position = [...position, action.payload.newPosition];
 
       return {
         ...state,
-        turn,
         position,
+        turn,
       };
     }
 
     case actionTypes.GENERATE_CANDIDATE_MOVES: {
+      const { candidateMoves } = action.payload;
       return {
         ...state,
-        candidateMoves: action.payload.candidateMoves,
+        candidateMoves,
       };
     }
 
@@ -26,6 +28,22 @@ export const reducer = (state, action) => {
       return {
         ...state,
         candidateMoves: [],
+      };
+    }
+
+    case actionTypes.PROMOTION_OPEN: {
+      return {
+        ...state,
+        status: Status.promoting,
+        promotionSquare: { ...action.payload },
+      };
+    }
+
+    case actionTypes.PROMOTION_CLOSE: {
+      return {
+        ...state,
+        status: Status.ongoing,
+        promotionSquare: null,
       };
     }
     default:
