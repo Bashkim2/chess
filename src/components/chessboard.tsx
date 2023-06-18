@@ -2,15 +2,63 @@ import { useRef, useState } from "react";
 import "../css/App.css";
 import "../css/Output.css";
 import Tile from "./tile";
-import Referee from "../referee/Referee";
-import {
-  verticalsAxis,
-  horizontalAxis,
-  Piece,
-  PieceType,
-  TeamType,
-  initialBoardState,
-} from "../Constants";
+
+const verticalsAxis = ["a", "b", "c", "d", "e", "f", "g", "h"];
+const horizontalAxis = ["1", "2", "3", "4", "5", "6", "7", "8"];
+
+interface Piece {
+  image: string;
+  x: number;
+  y: number;
+}
+
+// The chessboard and pieces positions initially
+
+const initialBoardState: Piece[] = [];
+
+// white pieces without pawns positions
+const whitePiece = [
+  "W_rock.png",
+  "W_knight.png",
+  "W_bishop.png",
+  "W_queen.png",
+  "W_king.png",
+  "W_bishop.png",
+  "W_knight.png",
+  "W_rock.png",
+];
+
+for (let i = 0; i < 8; i++) {
+  initialBoardState.push({ image: whitePiece[i], x: i, y: 0 });
+}
+
+// black pieces without pawns positions
+const blackPiece = [
+  "B_rock.png",
+  "B_knight.png",
+  "B_bishop.png",
+  "B_queen.png",
+  "B_king.png",
+  "B_bishop.png",
+  "B_knight.png",
+  "B_rock.png",
+];
+
+for (let i = 0; i < 8; i++) {
+  initialBoardState.push({ image: blackPiece[i], x: i, y: 7 });
+}
+
+// white pawns positions
+
+for (let i = 0; i < 8; i++) {
+  initialBoardState.push({ image: "B_pawn.png", x: i, y: 6 });
+}
+
+// black pawns positions
+
+for (let i = 0; i < 8; i++) {
+  initialBoardState.push({ image: "W_pawn.png", x: i, y: 1 });
+}
 
 // The chessboard functionality
 export default function Chessboard() {
@@ -18,11 +66,10 @@ export default function Chessboard() {
   const [activePiece, setActivePiece] = useState<HTMLElement | null>(null);
   const [gridX, setGridX] = useState(0);
   const [gridY, setGridY] = useState(0);
-  const referee = new Referee();
 
   const chessboardRef = useRef<HTMLDivElement>(null);
 
-  // Functions for grabbing pieces
+  // Functions for moving, grabbing and dropping pieces
   function grabPiece(e: React.MouseEvent) {
     const element = e.target as HTMLElement;
     const chessboard = chessboardRef.current;
@@ -46,7 +93,6 @@ export default function Chessboard() {
     }
   }
 
-  // Function moving pieces
   function movePiece(e: React.MouseEvent) {
     const chessboard = chessboardRef.current;
     if (activePiece && chessboard) {
@@ -78,7 +124,6 @@ export default function Chessboard() {
     }
   }
 
-  // Function dropping pieces
   function dropPiece(e: React.MouseEvent) {
     const chessboard = chessboardRef.current;
     if (activePiece && chessboard) {
@@ -87,85 +132,17 @@ export default function Chessboard() {
         Math.ceil((e.clientY - chessboard.offsetTop - 800) / 100)
       );
 
-      const currentPiece = pieces.find((p) => p.x === gridX && p.y === gridY);
-      const attackedPiece = pieces.find((p) => p.x === x && p.y === y);
-
-      // CurrentPiece (3,4)
-
-      if (currentPiece) {
-        const validMove = referee.isValidMove(
-          gridX,
-          gridY,
-          x,
-          y,
-          currentPiece.type,
-          currentPiece.team,
-          pieces
-        );
-
-        // En passant move logic
-        const isEnPassantMove = referee.isEnPassantMove(
-          gridX,
-          gridY,
-          x,
-          y,
-          currentPiece.type,
-          currentPiece.team,
-          pieces
-        );
-
-        const pawnDirection = currentPiece.team === TeamType.OUR ? 1 : -1;
-
-        if (isEnPassantMove) {
-          const updatedPieces = pieces.reduce((results, piece) => {
-            if (piece.x === gridX && piece.y === gridY) {
-              piece.enPassant = false;
-              piece.x = x;
-              piece.y = y;
-              results.push(piece);
-            } else if (!(piece.x === x && piece.y === y - pawnDirection)) {
-              if (piece.type === PieceType.PAWN) {
-                piece.enPassant = false;
-              }
-              results.push(piece);
-            }
-            return results;
-          }, [] as Piece[]);
-          setPieces(updatedPieces);
-        } else if (validMove) {
-          // Update the piece position
-          // And if a piece is attack remove it
-          const updatedPieces = pieces.reduce((results, piece) => {
-            if (piece.x === gridX && piece.y === gridY) {
-              if (Math.abs(gridY - y) === 2 && piece.type === PieceType.PAWN) {
-                // En Passant move is true only for the long move only
-                piece.enPassant = true;
-              } else {
-                piece.enPassant = false;
-              }
-            }
-            if (piece.x === gridX && piece.y === gridY) {
-              piece.x = x;
-              piece.y = y;
-              results.push(piece);
-            } else if (!(piece.x === x && piece.y === y)) {
-              if (piece.type === PieceType.PAWN) {
-                piece.enPassant = false;
-              }
-              results.push(piece);
-            }
-
-            return results;
-          }, [] as Piece[]);
-
-          setPieces(updatedPieces);
-        } else {
-          // Remove the attacked piece
-          activePiece.style.position = "relative";
-          activePiece.style.removeProperty("top");
-          activePiece.style.removeProperty("left");
-        }
-      }
+      console.log(x, y);
+      setPieces((value) => {
+        const pieces = value.map((p) => {
+          if (p.x === gridX && p.y === gridY) {
+            p.x = x;
+            p.y = y;
+          }
+          return p;
+        });
+        return pieces;
+      });
       setActivePiece(null);
     }
   }
