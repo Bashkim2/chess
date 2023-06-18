@@ -180,6 +180,3 @@ export const getPawnCaptures = ({
 
   return moves;
 };
-
-
-
