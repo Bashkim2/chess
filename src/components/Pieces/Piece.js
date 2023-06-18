@@ -4,7 +4,7 @@ import { generateCanditateMoves } from "../../reducer/actions/move";
 
 const Piece = ({ rank, file, piece }) => {
   const { appState, dispatch } = useAppContext();
-  const { turn, position: currentPosition } = appState;
+  const { turn, castleDirection, position: currentPosition } = appState;
 
   const onDragStart = (e) => {
     e.dataTransfer.effectAllowed = "move";
@@ -14,15 +14,14 @@ const Piece = ({ rank, file, piece }) => {
     }, 0);
 
     if (turn === piece[0]) {
-      console.log(piece[0]);
       const candidateMoves = arbiter.getValidMoves({
         position: currentPosition[currentPosition.length - 1],
         prevPosition: currentPosition[currentPosition.length - 2],
+        castleDirection: castleDirection[turn],
         piece,
-        rank,
         file,
+        rank,
       });
-      console.log(candidateMoves);
       dispatch(generateCanditateMoves({ candidateMoves }));
     }
   };
