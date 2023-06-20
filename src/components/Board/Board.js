@@ -6,6 +6,9 @@ import { useAppContext } from "../../contexts/Context";
 import Popup from "../Popup/Popup";
 import PromotionBox from "../Popup/PromotionBox/Promotions";
 
+import arbiter from "../../arbiter/arbiter";
+import { getKingPosition } from "../../arbiter/getMoves";
+
 const Board = () => {
   const ranks = Array(8)
     .fill()
@@ -17,6 +20,17 @@ const Board = () => {
   const { appState } = useAppContext();
   const position = appState.position[appState.position.length - 1];
 
+  const checkTile = (() => {
+    const isInCheck = arbiter.isPlayerInCheck({
+      positionAfterMove: position,
+      player: appState.turn,
+    });
+
+    if (isInCheck) return getKingPosition(position, appState.turn);
+
+    return null;
+  })();
+
   const getClassName = (i, j) => {
     let c = "tile";
     c += (i + j) % 2 === 0 ? " tile--dark " : " tile--light ";
@@ -24,6 +38,11 @@ const Board = () => {
       if (position[i][j]) c += " attacking";
       else c += " highlight";
     }
+
+    if (checkTile && checkTile[0] === i && checkTile[1] === j) {
+      c += " checked";
+    }
+
     return c;
   };
 
@@ -38,7 +57,7 @@ const Board = () => {
               key={file + "" + rank}
               i={i}
               j={j}
-              className={getClassName(7 - i, j)}
+              className={`${getClassName(7 - i, j)}`}
             ></div>
           ))
         )}
