@@ -8,6 +8,7 @@ import PromotionBox from "../Popup/PromotionBox/Promotions";
 
 import arbiter from "../../arbiter/arbiter";
 import { getKingPosition } from "../../arbiter/getMoves";
+import GameEnds from "../Popup/GameEnds/GameEnds";
 
 const Board = () => {
   const ranks = Array(8)
@@ -65,7 +66,10 @@ const Board = () => {
 
       <Pieces />
 
-      <Popup />
+      <Popup>
+          <PromotionBox />
+          <GameEnds />
+      </Popup>
 
       <Files files={files} />
     </div>
