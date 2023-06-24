@@ -14,6 +14,19 @@ export const detectStalemate = () => {
   };
 };
 
+export const detectInsufficientMaterial = () => {
+  return {
+    type: actionTypes.INSUFFICIENT_MATERIAL,
+  };
+};
+
+export const detectCheckmate = (winner) => {
+  return {
+    type: actionTypes.WIN,
+    payload: winner,
+  };
+};
+
 export const setupNewGame = () => {
   return {
     type: actionTypes.NEW_GAME,
