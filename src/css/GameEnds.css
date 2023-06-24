@@ -4,8 +4,8 @@
     background-repeat: no-repeat;
     background-position: center;
 }
-.wins.White {background-image: url('../../../assets/wk.png');}
-.wins.Black {background-image: url('../../../assets/bk.png');}
+.wins.White {background-image: url('../assets/wk.png');}
+.wins.Black {background-image: url('../assets/bk.png');}
 .draws {
     height: 100px;
     background-size: contain;
