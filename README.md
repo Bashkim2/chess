@@ -1,6 +1,7 @@
  # __Chess__
 
 Chess is a classic two-player board game that has been played for centuries. It is a game of strategy and skill, and is often considered the "king" of board games.
+Here can you test the game itself:   https://mychess-web-app.netlify.app/
 
 ## __How to Play__
 
