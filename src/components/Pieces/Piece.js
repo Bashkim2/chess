@@ -1,6 +1,6 @@
 import arbiter from "../../arbiter/arbiter";
 import { useAppContext } from "../../contexts/Context";
-import { generateCanditateMoves } from "../../reducer/actions/move";
+import { generateCandidates } from "../../reducer/actions/move";
 
 const Piece = ({ rank, file, piece }) => {
   const { appState, dispatch } = useAppContext();
@@ -22,7 +22,7 @@ const Piece = ({ rank, file, piece }) => {
         file,
         rank,
       });
-      dispatch(generateCanditateMoves({ candidateMoves }));
+      dispatch(generateCandidates({ candidateMoves }));
     }
   };
   const onDragEnd = (e) => {

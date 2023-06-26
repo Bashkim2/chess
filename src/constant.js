@@ -1,6 +1,5 @@
 import { createPosition } from "./helpful/helper";
 
-
 export const Status = {
   ongoing: "Ongoing",
   promoting: "Promoting",
@@ -14,6 +13,8 @@ export const initGameState = {
   position: [createPosition()],
   turn: "w",
   candidateMoves: [],
+  movesList: [],
+
   promotionSquare: null,
   status: Status.ongoing,
   castleDirection: {

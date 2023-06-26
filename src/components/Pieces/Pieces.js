@@ -7,11 +7,12 @@ import arbiter from "../../arbiter/arbiter";
 import { clearCandidates, makeNewMove } from "../../reducer/actions/move";
 import { getCastlingDirections } from "../../arbiter/getMoves";
 import {
-    detectCheckmate,
+  detectCheckmate,
   detectInsufficientMaterial,
   detectStalemate,
   updateCastling,
 } from "../../reducer/actions/game";
+import { getNewMoveNotation } from "../../helpful/helper";
 
 const Pieces = () => {
   const { appState, dispatch } = useAppContext();
@@ -77,7 +78,15 @@ const Pieces = () => {
         x,
         y,
       });
-      dispatch(makeNewMove({ newPosition }));
+      const newMove = getNewMoveNotation({
+        piece,
+        rank,
+        file,
+        x,
+        y,
+        position: currentPosition,
+      });
+      dispatch(makeNewMove({ newPosition, newMove }));
 
       if (arbiter.insufficientMaterial(newPosition))
         dispatch(detectInsufficientMaterial());

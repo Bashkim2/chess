@@ -1,5 +1,5 @@
 import { useAppContext } from "../../../contexts/Context";
-import { copyPosition } from "../../../helpful/helper";
+import { copyPosition, getNewMoveNotation } from "../../../helpful/helper";
 import { clearCandidates, makeNewMove } from "../../../reducer/actions/move";
 import "../../../css/PromotionBox.css";
 
@@ -16,9 +16,9 @@ const PromotionBox = ({ onClosePopup }) => {
     let style = {};
 
     if (promotionSquare.x === 7) {
-      style.top = "-15.8%";
+      style.top = "-12.5%";
     } else {
-      style.top = "101.5%";
+      style.top = "97.5%";
     }
 
     if (promotionSquare.y <= 1) {
@@ -40,10 +40,16 @@ const PromotionBox = ({ onClosePopup }) => {
 
     newPosition[promotionSquare.rank][promotionSquare.file] = "";
     newPosition[promotionSquare.x][promotionSquare.y] = color + option;
-
+    const newMove = getNewMoveNotation({
+      ...appState.selectedPiece,
+      x: promotionSquare.rank,
+      y: promotionSquare.file,
+      position: appState.position[appState.position.length - 1],
+      promotesTo: option,
+    });
     dispatch(clearCandidates());
 
-    dispatch(makeNewMove({ newPosition }));
+    dispatch(makeNewMove({ newPosition, newMove }));
   };
 
   return (
